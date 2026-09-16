@@ -1,0 +1,64 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# ==========================================
+# ΠΡΟΣΩΡΙΝΕΣ ΕΞΑΙΡΕΣΕΙΣ (Μέχρι να καθαριστούν)
+# ==========================================
+
+# App routes που θέλουν καθάρισμα
+/app/banners/
+/app/shops/
+
+# Φάκελοι που δεν θέλουμε τώρα
+/hooks/
+/styles/
+/types/
+
+# Services που θέλουν καθάρισμα (μένει μόνο το characters.ts)
+/services/banners.ts
+/services/shops.ts
+
+# Utils που θέλουν καθάρισμα (μένουν τα cn, collection-analysis, getImageSource, string-manipulation, ui-styles-helper)
+/utils/banner-info-data.ts
+/utils/date-utils.ts
+/utils/probability.ts
+/utils/shops-filters.ts

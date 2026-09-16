@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+@import "../styles/theme.css";
+@import "../styles/borders.css";
+@import "../styles/scrollbar.css";
+@import "../styles/themes/sidebar-styles.css";
+@import "../styles/themes/shop-themes.css";
+
+@theme inline {
+
+
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-slate-950: var(--color-slate-950);
+  --color-slate-900: var(--color-slate-900);
+  --color-slate-800: var(--color-slate-800);
+  --color-slate-700: var(--color-slate-700);
+
+  --color-gold-500: var(--color-gold-500);
+  --color-gold-400: var(--color-gold-400);
+  --shadow-gold-glow: 0 0 15px var(--color-gold-glow);
+  --color-red-400: var(--color-red-400);
+  --color-red-600: var(--color-red-600);
+  --shadow-red-glow: 0 0 10px var(--color-red-glow);
+  --color-bordeaux: #7f1d1d; 
+  --color-bordeaux-light: #991b1b; 
+  --shadow-bordeaux-glow: 0 0 12px rgba(127, 29, 29, 0.6);
+  --color-gem-cyan: var(--color-gem-cyan);
+  --shadow-gem-glow: 0 0 15px var(--color-cyan-glow);
+  --color-gem-deep: var(--color-gem-deep);
+  --shadow-gem-active: 0 0 20px rgba(99, 102, 241, 0.4);
+  --color-gem-blue: var(--color-gem-blue);
+  --shadow-blue-glow: 0 0 15px rgba(14, 165, 233, 0.5);
+
+}
+
+:root {
+
+  background-color: var(--color-background);
+  color: white;
+
+
+  /*------------------------------------------------*/
+  /* --- Neutrals / Dark Backgrounds(Slate) --- */
+  --color-slate-950: #020617;    /*Deepest Dark (Main BG) */
+  --color-slate-900: #0f172a;    /*Panels, Sidebar, Inputs */
+  --color-slate-800: #1e293b;    /*Cards, Headers */
+  --color-slate-700: #334155;    /*Borders Strong, Scrollbar Thumb */
+
+  /* --- Text Color --- */
+  --color-white: #ffffff;
+  --color-text-100: #f1f5f9;     /*Main Title / Body */
+  --color-text-200: #e2e8f0;     /*Secondary */
+  --color-text-300: #cbd5e1;     /*Descriptions */
+  --color-text-400: #94a3b8;     /*Muted / Labels */
+  --color-text-500: #64748b;     /*Disabled / Dark Muted */
+
+  /* --- Gold Accent --- */
+  --color-gold-300: #fde68a;   /* Soft Ivory Gold (Hover light) */
+  --color-gold-400: #facc15;   /* Bright Gold (Highlights/Icons) */
+  --color-gold-500: #eab308;   /* Primary Legend Gold (Borders/Buttons) */
+  --color-gold-600: #ca8a04;   /* Deep Ochre (Active/Pressed) */
+  --color-gold-700: #a16207;   /* Bronze Gradient (Darker tones) */
+  --color-gold-glow: rgba(234, 179, 8, 0.3); /* Soft Gold Aura */
+
+/* --- Red Accent --- */
+  --color-red-300: #fca5a5;    /* Soft Rose (Muted text) */
+  --color-red-400: #f87171;    /* Bright Crimson (UI Highlights) */
+  --color-red-500: #ef4444;    /* Classic OPTC Red (Primary Action) */
+  --color-red-600: #dc2626;    /* Blood Red (Active States) */
+  --color-red-700: #b91c1c;    /* Deep Maroon (Gradients) */
+  --color-red-glow: rgba(239, 68, 68, 0.35); /* Red Danger Glow */
+
+  --color-gem-cyan: #22d3ee;
+  --color-gem-purple: #a855f7;
+  --color-cyan-glow: rgba(34, 211, 238, 0.4);
+  --color-gem-deep: #1e1b4b;   /* Πολύ σκούρο indigo για βάση */
+  --color-gem-glow: #6366f1;
+
+  --color-gem-blue: #0ea5e9;    /* Sky 500 */
+  --color-gem-dark: #082f49;    /* Sky 950 */
+}
+
+
+body {
+  @apply antialiased;
+
+  /*----------------------------------*/
+
+  background: var(--color-slate-950);
+  color: var(--color-text-100);
+}
+
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+
+
+
+
+
+/*
+html {
+  scrollbar-gutter: stable;
+}
+*/
+
+  .icon-rainbow{
+    fill: url(#rainbowGradient);
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2));
+    transition: filter 0.3s ease;
+  }
+
+  .group:hover .icon-rainbow{
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+  }
+
+  .border-rainbow{
+    border: 1px solid transparent;
+    background: linear-gradient(var(--color-slate-900), var(--color-slate-900)) padding-box,
+                linear-gradient(to right, #ff0000, #ff00ff, #00ffff, #ffff00 ) border-box;
+  }
+
+
+@keyframes fade-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5; 
+  }
+}
+
+.animate-rainbow-pulse {
+  animation: fade-pulse 2s ease-in-out infinite;
+  will-change: opacity; 
+}
+
+
+/*Base Border Apperance*/
