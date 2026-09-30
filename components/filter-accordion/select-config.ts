@@ -35,8 +35,8 @@ export const MULTI_SELECT_CONFIGS: Record<MultiSelectVariant, VariantConfig> ={
     //3. Types Variant
     types: {
         renderer: "icon",
-        iconSize: 48,
-        container: "grid grid-cols-5 gap-3",
+        iconSize: 40,
+        container: "grid grid-cols-5 gap-2",
         button: "cursor-pointer transition-all duration-200",
         item: "relative rounded-full transition-all duration-300",
         selected: "drop-shadow-[0_0_10px_rgba(239,68,68,0.8)] brightness-110",
@@ -46,8 +46,8 @@ export const MULTI_SELECT_CONFIGS: Record<MultiSelectVariant, VariantConfig> ={
     //4. Classes Variant
     classes: {
         renderer: "icon",
-        iconSize: 33,
-        container: "grid grid-cols-4 gap-2",
+        iconSize: 35,
+        container: "grid grid-cols-5 gap-2",
         button: "cursor-pointer transition-all duration-200",
         item: "relative rounded-full transition-all duration-300",
         selected: "drop-shadow-[0_0_10px_rgba(239,68,68,0.8)] brightness-110",

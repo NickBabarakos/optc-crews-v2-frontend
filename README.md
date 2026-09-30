@@ -1,21 +1,22 @@
 # OPTC Crews V2 - Frontend (WIP)
 
-A modern, high-performance, and offline-first web application designed for **One Piece Treasure Cruise (OPTC)** players to browse, filter, and track their character collections seamlessly.
+A modern, high-performance, and offline-first web application designed for **One Piece Treasure Cruise (OPTC)** players to browse, filter, and track their character collections, analyze banner step-ups, and calculate summon probabilities. 
 
 > [!WARNING]
 > ### Work in Progress (Early Development Stage)
 > **Please do not clone or attempt to build this repository yet.**  
-> Several in-progress modules, route handlers, and shared style sheets (e.g., `/app/shops`, `/app/banners`, `/styles`, `/hooks`) are temporarily excluded via `.gitignore` while undergoing extensive cleanup and refactoring. A self-contained, reproducible build setup will be provided once the initial architecture stabilization is complete.
+> Several in-progress modules and route handlers (e.g., `/app/shops`) are temporarily excluded via `.gitignore` while undergoing extensive cleanup and refactoring. A self-contained, reproducible build setup will be provided once the initial architecture stabilization is complete.
 
 ---
 
-## Key Highlights (Character Page)
+## Key Highlights 
 
 - **3,000+ Characters Virtualized:** Smooth 60 FPS scrolling through the entire character roster without DOM bloat (~225 recycled DOM nodes at any time).
 - **Offline-First Data Architecture:** Fully integrated **IndexedDB caching** via `@tanstack/react-query` & `idb-keyval`, decoupling browsing from the backend and eliminating redundant network calls.
 - **Zero-Latency State Isolation:** Granular **Zustand** selectors ensuring state changes (owning a unit, tracking copies, rainbow/limit break status) re-render **strictly only the interacted card** (<15ms INP).
+- **Statistical Summon Engine:** Client-side binomial cumulative probability calculator determining exact pull chances per step for multi-target new batches and custom rate presets.
+- **Deep-Linked Modal & Navigation State:** URL query synchronization powered by `nuqs` across filters and modal views (`?bannerId=...`), enabling shareable URLs with automated history cleanup.
 - **Decoupled CDN Asset Pipeline:** WebP asset delivery served exclusively through Cloudflare CDN with aggressive HTTP caching, leaving zero bandwidth footprint on the host server
-- **URL-Driven Search & Filters:** URL query state synchronization powered by `nuqs`, enabling shareable filtered views and instant sub-200ms multi-criteria sorting across 3,000 items.
 
 ## Tech Stack
 
@@ -40,6 +41,20 @@ The character grid adapts dynamically depending on the active contextual mode:
 - Instant client-side filtering across attributes: **Type, Class, Rarity, Category, Tags, and Cost**.
 - Multi-field search supporting character **ID, Name, and Family**.
 - Smart sorting supporting game-specific metrics (ID, Name, Rarity, ATK/HP/RCV, Level, LB+ status).
+
+## 3. Sugo-Fest Banner Hub & Probability Engine
+A comprehensive suite for tracking active banners, dissecting step-up structures, and calculating summons:
+- **Active & Upcoming Banner Showcase:** Categorized banner lists featuring live countdown timers (`useBannerTimer`), visual progress indicators, and custom thematic styling based on banner classification (*Super Sugo, Anniversary, Kizuna, Treasure Map, Pirate Rumble, EOM, etc.*).
+-  **Recruitable Characters & Owned Sync:** Cross-references banner character pools with the player's local Zustand collection to display real-time ownership ratios (`owned / total`), completion badges, and rate-boosted unit indicators.
+- **Step-Up & Pool Visualizer:**
+    - **Dual Display Modes:** Full chronological **List View** or aggregated **Compact View** grouping identical step structures.
+    - **In-Game Typography Engine:** Native-styled game digit asset rendering (`GameNumber`) supporting ordinal tokens (`1st, 2nd, 3rd`) and automatic hyphenated consecutive ranges (`1-3, 5, 8`).
+    - **Pool & Gift Breakdown:** Step-by-step display of Legend/RR pool sizes and guaranteed reward milestones.
+- **Summon Probability Calculator:**
+    - **New Batch Mode:** Multi-target selector to calculate cumulative odds of pulling combinations of debut characters across every step.
+    - **Custom Mode:** Configurable rate overrides per step tier separating standard pulls (Posters 1–10) from guaranteed 11th poster mechanics.
+    - **Mathematical Model:** Leverages **Binomial Distribution ($nCr$)** and cumulative failure accumulators to deliver exact step-by-step milestone probability projections and heatmaps.
+- **Community Strategy & Verdict:** Embedded strategic pull recommendations (*Hard Skip*, *Medal Pulls*, *Worth It, But...*) and resource allocation guidance for free-to-play players.
 
 ---
 

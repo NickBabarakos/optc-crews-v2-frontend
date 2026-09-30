@@ -15,7 +15,7 @@ export function UnitIdentityRow({types, classes, stars, cost}: UnitIdentityRowPr
                             key={`type-${type}-${idx}`}
                             src={`/filter-icons/${type.toLowerCase()}.png`}
                             alt={type}
-                            className="w-8 h-8 object-contain drop-shadow"
+                            className="w-7 h-7 object-contain drop-shadow"
                         />
                     ))}
                 </div>

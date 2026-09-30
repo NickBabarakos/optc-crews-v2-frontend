@@ -9,7 +9,7 @@ import { InteractiveCharacterProps } from '@/components/interactive-character/ty
 //Style Reference Cache
 const sizeStyleCache = new Map<number, React.CSSProperties>();
 
-function InteractiveCharacterComponent({id, name, category, src, context, size=112, showLLB, evolution, onSelect}: InteractiveCharacterProps){
+function InteractiveCharacterComponent({id, name, category, src, context, size, showLLB, evolution, onSelect}: InteractiveCharacterProps){
     const {isOwned, isRainbowed, copies, limitBreakPlus, rumbleBadgeSrc, canBeSuperEvolved, handleLeftClick, handleRightClick} = useCharacterInteractions({id, category, context, evolution, onSelect});
 
     const getContainerClasses = () => {
@@ -33,14 +33,14 @@ function InteractiveCharacterComponent({id, name, category, src, context, size=1
         <div
             onClick={handleLeftClick}
             onContextMenu={handleRightClick}
-            style={getSizeStyle(size)}
-            className={`relative cursor-pointer overflow-hidden shrink-0 select-none ${getContainerClasses()}`}
+            style={size ? getSizeStyle(size) : undefined}
+            className={`relative cursor-pointer overflow-hidden shrink-0 select-none ${ size ? '' : "w-full h-full"} ${getContainerClasses()}`}
     >
             <img
                 src={src}
                 alt={name}
-                width={size}
-                height={size}
+                width={size ?? 112}
+                height={size ?? 112}
                 loading="lazy"
                 decoding="async"
                 className={`object-cover w-full h-full transition-opacity duration-150 ${getImageClasses()}`}

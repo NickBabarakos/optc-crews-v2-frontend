@@ -1,6 +1,6 @@
 import { UnitForm } from "@/app/characters/_types/details-modal";
 
-export type ImageType = 'unitIcon' | 'evolverIcon';
+export type ImageType = 'unitIcon' | 'evolverIcon' | 'stepLabel';
 
 interface ImageOptions {
     unitType?: string;
@@ -10,9 +10,8 @@ interface ImageOptions {
 const CDN_BASE_URL = 'https://optc-crews-assets.pages.dev';
 
 export function getImageSource(path: string, type: ImageType = 'unitIcon', options?: ImageOptions): string {
-    if (type === 'evolverIcon') {
-        return `${CDN_BASE_URL}//evolvers_icons/${path}.webp`;
-    }
+    if (type === 'evolverIcon') return `${CDN_BASE_URL}//evolvers_icons/${path}.webp`;
+    if (type === 'stepLabel') return  `${CDN_BASE_URL}/step_labels/${path}.webp`;
 
     let resolvedPath = path;
 

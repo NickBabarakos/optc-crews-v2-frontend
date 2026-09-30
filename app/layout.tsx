@@ -30,6 +30,12 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
 
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+      <head>
+        <script 
+          crossOrigin="anonymous"
+          src="//unpkg.com/react-scan/dist/auto.global.js"
+        />
+      </head>
       <body className="h-screen bg-background text-white flex overflow-hidden">
         <NuqsAdapter>
           <QueryProvider>

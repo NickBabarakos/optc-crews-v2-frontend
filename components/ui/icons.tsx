@@ -72,6 +72,20 @@ export const ArrowUpIcon = ({ className }: { className?: string }) => (
     </svg>
 );
 
+export const SolidArrowUpIcon = ({ className }: { className?: string }) => (
+    <svg 
+        viewBox="0 0 16 16" 
+        fill="currentColor" 
+        stroke="white"
+        strokeWidth="1"
+        strokeLinejoin="round"
+        className={`overflow-visible ${className ?? ''}`}
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path d="M6 8L2 8L2 6L8 0L14 6L14 8L10 8L10 16L6 16L6 8Z" />
+    </svg>
+);
+
 export const MissingIcon = ({ className }: { className?: string }) => (
     <svg 
         viewBox="0 0 64 64" 

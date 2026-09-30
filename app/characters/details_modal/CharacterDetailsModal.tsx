@@ -39,7 +39,7 @@ export function CharacterDetailsModal(){
             isOpen={isOpen}
             onClose={closeModal}
             header={modalHeader}
-            wrapperStyles="max-w-4xl w-[95%] h-[85vh] md:h-[700px]"
+            wrapperStyles="max-w-4xl w-[92%] h-[620px] max-h-[88vh]"
         >
             {isLoading? (
                 <div className="flex justify-center p-10">Loading...</div>
@@ -64,7 +64,7 @@ export function CharacterDetailsModalHeader({title, id, imageUrl, unitType, acti
     return(
         <div className="flex items-center gap-5">
             {/*Left Section: Image + Id*/}
-            <div className="flex flex-col items-center gap-2 shrink-0">
+            <div className="flex flex-col items-center gap-1 mt-2 mb-2 shrink-0">
                 {/*Image Container*/}
                 <div className="relative w-20 h-20 shrink-0 border-2 border-slate-700/50 rounded-lg overflow-hidden shadow-lg bg-slate-950 flex items-center justify-center">
                     <img 
@@ -93,30 +93,32 @@ export function CharacterDetailsModalHeader({title, id, imageUrl, unitType, acti
 export function CharacterDetailsModalBody({char, activeForm, setActiveForm, onNavigate, filterByTag}:CharacterDetailsBodyProps){
     const formsList = FORMS.find(f => f.unitType === char.unitType)?.forms;
 
-    return(
-        <div className="flex flex-col h-full py-1 min-h-0">
-
-            <div className="flex-1 space-y-6">
+    return (
+        <div className="flex flex-col h-full min-h-0">
+            <div className="flex-1 overflow-y-auto min-h-0 pr-2 flex flex-col gap-6 no-scrollbar">
                 {char.unitType !== 'Solo' && (
                     <ViewToggle 
                         options={formsList}
                         activeOption={activeForm}
                         onClick={setActiveForm}
                     />
-                )}
+                    )}
 
-                {/*Το Grid με τα δεδομένα */}
-                <UnitInfoGrid char={char} form={activeForm} filterByTag={filterByTag}/>
-            </div>
-                    
-            <div className="mt-auto pt-6">
-                <UnitEvolutionNav
-                    preId={char.evolution?.preEvolutionId}
-                    superEvolution={char.evolution?.superEvolution}
-                    onNavigate={onNavigate}
-                />
-</div>
+            <UnitInfoGrid 
+                char={char} 
+                form={activeForm} 
+                filterByTag={filterByTag}
+            />
         </div>
+
+        <div className="shrink-0">
+            <UnitEvolutionNav
+                preId={char.evolution?.preEvolutionId}
+                superEvolution={char.evolution?.superEvolution}
+                onNavigate={onNavigate}
+            />
+        </div>
+    </div>
     );
 }
 

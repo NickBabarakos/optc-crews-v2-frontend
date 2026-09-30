@@ -45,7 +45,6 @@ next-env.d.ts
 # ==========================================
 
 # App routes που θέλουν καθάρισμα
-/app/banners/
 /app/shops/
 
 # Φάκελοι που δεν θέλουμε τώρα
@@ -58,7 +57,4 @@ next-env.d.ts
 /services/shops.ts
 
 # Utils που θέλουν καθάρισμα (μένουν τα cn, collection-analysis, getImageSource, string-manipulation, ui-styles-helper)
-/utils/banner-info-data.ts
-/utils/date-utils.ts
-/utils/probability.ts
 /utils/shops-filters.ts

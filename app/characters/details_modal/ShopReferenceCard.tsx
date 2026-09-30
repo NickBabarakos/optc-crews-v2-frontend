@@ -20,8 +20,8 @@ export function ShopReferenceCard({shopName, currency, price}: ShopReferenceCard
                     <img
                         src={`/game-currency/${currency}.png`}
                         alt={currency}
-                        width={18}
-                        height={18}
+                        width={20}
+                        height={20}
                         loading="eager"
                         decoding="async"
                         className="w-4.5 h-4.5 object-contain drop-shadow"
